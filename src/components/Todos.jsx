@@ -1,26 +1,26 @@
 import React from 'react';
-import Todoall from './Todoall'
+import Todo from './Todo'
 
 import styled from 'styled-components'
 
 const TodosS = styled.div`
+  margin-top: 32px;
   display: grid;
   grid-template-columns: 1fr;
   gap: 29px;
 `
 
-const Todos = ({setTodos, todos, category}) => {
+const Todos = ({setTodos, todos, category, filtroTodos}) => {
 
-  
   return ( 
     <TodosS>   
-    
-      {todos.length ?
-        todos.map(todo => ( 
-          <Todoall  
+      {filtroTodos.length ?
+        filtroTodos.map(todo => ( 
+          <Todo  
             todo={todo}
             setTodos={setTodos}
             todos={todos}
+            filtroTodos={filtroTodos}
           />
         ))
         : null
@@ -29,5 +29,5 @@ const Todos = ({setTodos, todos, category}) => {
     </TodosS>
    );
 }
- 
+
 export default Todos;
