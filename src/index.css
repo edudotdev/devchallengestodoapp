@@ -8,6 +8,20 @@ body, button, input {
   font-family: Montserrat;
 }
 
+button, input {
+  cursor: pointer;
+  outline: none;
+}
+
+input[type="text"] {
+  cursor: unset;
+}
+
+.underline {
+  color: #333;
+  text-decoration: line-through;
+}
+
 .all {
   left: 56px;
 }

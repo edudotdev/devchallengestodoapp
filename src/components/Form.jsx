@@ -10,7 +10,6 @@ const FormS = styled.form`
 
   input, button {
     border-radius: 12px;
-    outline: none;
     padding: 20px 0;
     border: none;
   }
@@ -23,8 +22,6 @@ const FormS = styled.form`
 
   button {
     color: #fff;
-    cursor: pointer;
-
     background: #2F80ED;
     box-shadow: 0px 2px 6px rgba(127, 177, 243, 0.4); 
   }

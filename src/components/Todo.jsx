@@ -6,6 +6,8 @@ const TodoS = styled.div`
 
   label {
     display: flex; 
+    align-items: center;
+    height: 100%;
   }
 
   p {
@@ -32,11 +34,11 @@ const TodoS = styled.div`
   }
 `
 
-const Todoall = ({todo, setTodos, todos}) => {
+const Todoall = ({todo, setTodos, todos, setDeleteid}) => {
 
   const {name, state, id} = todo
 
-
+  
   const handleClick = () => { 
     {setTodos(todos.map((todo) => {
       if (todo.id === id) {
@@ -51,11 +53,12 @@ const Todoall = ({todo, setTodos, todos}) => {
 
   return ( 
     <TodoS>
-        <label >
-          <input type="checkbox" onClick={handleClick}/> 
-          <p>{`${name}`}</p>
+      <form>
+        <label>
+          <input type="checkbox" readOnly checked={state} onClick={handleClick}/> 
+          <p className={state ? "underline" : null}>{`${name}`}</p>
         </label>
-
+      </form>
     </TodoS>
    );
 }

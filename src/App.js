@@ -27,6 +27,10 @@ function App() {
   const [filtroTodos, setFiltroTodos] = useState([]) 
   
   useEffect(() => {
+    getLocalStorage()  
+  }, [])
+
+  useEffect(() => {
     if (category === "active") {
       setFiltroTodos(todos.filter((todo) => todo.state === false))
     } else if (category === "completed") {
@@ -34,8 +38,22 @@ function App() {
     } else {
       setFiltroTodos(todos)
     }
+
+    saveLocalStorage()
   }, [category, todos])
 
+  const saveLocalStorage = () => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }
+
+  const getLocalStorage = () => {
+    if(localStorage.getItem('todos')) {
+      let todoLocal = JSON.parse(localStorage.getItem('todos'))
+      setTodos(todoLocal)
+    }else {
+      localStorage.setItem('todos', JSON.stringify([]))
+    }
+  }
 
   return (
     <Container>
