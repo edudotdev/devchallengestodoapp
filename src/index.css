@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
 body, button, input {
   font-family: Montserrat;
 }
@@ -22,12 +27,12 @@ input[type="text"] {
   text-decoration: line-through;
 }
 
-.all {
-  left: 56px;
+:root {
+  --btnState: 89px;
 }
-.active {
-  left: 254px;
-}
-.completed {
-  left: 456px;
+
+@media only screen and (max-width: 600px) {
+  :root {
+    --btnState: 70px;
+  }
 }

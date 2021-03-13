@@ -1,5 +1,6 @@
 import React from 'react';
 import Todo from './Todo'
+import BtnDelete from './Btndelete'
 
 import styled from 'styled-components'
 
@@ -12,18 +13,34 @@ const TodosS = styled.div`
 
 const Todos = ({setTodos, todos, category, filtroTodos}) => {
 
+  const handleDelete = () => {
+    setTodos(todos.filter(todo => todo.state === false))
+  }
+
   return ( 
     <TodosS>   
-      {filtroTodos.length ?
-        filtroTodos.map(todo => ( 
-          <Todo  
-            todo={todo}
-            setTodos={setTodos}
-            todos={todos}
-            filtroTodos={filtroTodos}
+      {filtroTodos.length 
+        ?
+          filtroTodos.map(todo => ( 
+            <Todo  
+              todo={todo}
+              setTodos={setTodos}
+              todos={todos}
+              filtroTodos={filtroTodos}
+              category={category}
+            />
+          ))
+        : 
+          <p>no hay nada</p>
+      }
+
+      {category === 'completed' && filtroTodos.length !== 0
+        ?
+          <BtnDelete
+          handleDelete={handleDelete}
           />
-        ))
-        : null
+        :
+          null
       }
 
     </TodosS>

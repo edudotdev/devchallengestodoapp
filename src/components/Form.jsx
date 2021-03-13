@@ -5,13 +5,21 @@ import styled from 'styled-components'
 const FormS = styled.form`
   margin-top: 18px;
   display: grid;
-  grid-template-columns: 1fr 109px;
+  grid-template-columns: 1fr minmax(70px, 109px);
   gap: 25px;
+
+  @media only screen and (max-width: 600px) {
+    gap: 15px;
+  }
 
   input, button {
     border-radius: 12px;
     padding: 20px 0;
     border: none;
+
+    @media only screen and (max-width: 600px) {
+      padding: 15px 0;
+    }
   }
 
   input {

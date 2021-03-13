@@ -2,13 +2,14 @@ import React, {useState, useEffect} from 'react';
 import Todostates from './components/Todostates'
 import Form from './components/Form'
 import Todos from './components/Todos'
-import TodoCompleted from './components/TodoCompleted'
+import Footer from './components/Footer'
 
 import styled from 'styled-components'
 
 const Container = styled.div`
   max-width: 600px;
-  margin: 32px auto 0 auto;
+  margin:  0 auto;
+  padding: 32px 20px;
 
   h1 {
     font-family: Raleway;
@@ -56,36 +57,34 @@ function App() {
   }
 
   return (
-    <Container>
-      <h1>#todo</h1> 
-      <Todostates 
-        setCategory={setCategory}
-        category={category}
-      />
+    <>
+      <Container>
+        <h1>#todo</h1> 
+        <Todostates 
+          setCategory={setCategory}
+          category={category}
+        />
 
         {category !== "completed"
           ?
-            <>
               <Form
                 todos={todos}
                 setTodos={setTodos}
-              /> 
-              <Todos 
-                setTodos={setTodos}
-                category={category}
-                todos={todos}
-                filtroTodos={filtroTodos}
-              />
-            </>
-          : <TodoCompleted 
-              setTodos={setTodos}
-              category={category}
-              todos={todos}
-              filtroTodos={filtroTodos} 
-            />
+              />     
+          : null
         }
 
-    </Container>
+        <Todos 
+          setTodos={setTodos}
+          category={category}
+          todos={todos}
+          filtroTodos={filtroTodos}
+        />
+
+      </Container>
+
+      <Footer />
+    </>
   );
 }
 

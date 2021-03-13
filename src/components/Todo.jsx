@@ -34,7 +34,24 @@ const TodoS = styled.div`
   }
 `
 
-const Todoall = ({todo, setTodos, todos, setDeleteid}) => {
+const Task = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 40px;
+
+  button {
+    border: none;
+    background: none;
+    color: #BDBDBD; 
+    text-align: center;
+    cursor: pointer;
+    
+    span {
+      font-size: 28px;
+    }
+  }
+`
+
+const Todo = ({todo, setTodos, todos, category}) => {
 
   const {name, state, id} = todo
 
@@ -51,16 +68,29 @@ const Todoall = ({todo, setTodos, todos, setDeleteid}) => {
     }))}
   }
 
+  const handleDelete = () => {
+    setTodos(todos.filter(todo => todo.id !== id))
+  }
+
   return ( 
     <TodoS>
-      <form>
+      <Task> 
         <label>
           <input type="checkbox" readOnly checked={state} onClick={handleClick}/> 
           <p className={state ? "underline" : null}>{`${name}`}</p>
         </label>
-      </form>
+    
+        {category === "completed" ? 
+          <button onClick={handleDelete}>
+          <span className="material-icons">
+            delete_outline
+          </span> 
+        </button>
+        : null
+        }
+      </Task>
     </TodoS>
    );
 }
  
-export default Todoall;
+export default Todo;
